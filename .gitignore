@@ -1,0 +1,9 @@
+
+# Visual Studio 2015/2017 cache/options directory
+.vs/
+
+doc/
+Uploads/
+.idea/
+.claude/
+.mcp.json

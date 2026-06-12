@@ -1,0 +1,21 @@
+services:
+  nginx:
+    image: nginx:1.29.8-alpine
+    volumes: 
+      - ./Uploads:/usr/share/nginx/html:ro
+    ports: 
+      - "8080:80"
+
+  #db:
+  #  image: postgres:17.4-alpine3.21
+  #  environment:
+  #      - POSTGRES_DB=project-staging
+  #      - POSTGRES_HOST_AUTH_METHOD=trust
+  #  ports:
+  #      - "127.0.0.1:5432:5432"
+  #  volumes:
+  #      - db:/var/lib/postgresql/data:rw
+  #  restart: always
+
+volumes:
+  db:
