@@ -60,7 +60,7 @@ namespace Application.Services {
         return CreateValidationProblem(result);
 
       // send email with credentials
-      await email_sender.SendEmailAsync(email, "Ваш аккаунт Agroup-Invest.KG", $@"
+      await email_sender.SendEmailAsync(email, "Ваш аккаунт NewProject.com", $@"
         <b>Роль:</b> {user.Role}<br>
         <b>Email:</b> {email}<br>
         <b>Пароль:</b> <code>{password}</code>

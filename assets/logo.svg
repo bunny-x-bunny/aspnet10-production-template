@@ -1,0 +1,88 @@
+<svg width="1200" height="320" viewBox="0 0 1200 320" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ASP.NET Core 10 Production API Template">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="320" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0B1020"/>
+      <stop offset="1" stop-color="#151B30"/>
+    </linearGradient>
+    <linearGradient id="purple" x1="110" y1="60" x2="260" y2="260" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#8B5CF6"/>
+      <stop offset="1" stop-color="#5B21B6"/>
+    </linearGradient>
+    <linearGradient id="ear" x1="120" y1="60" x2="250" y2="128" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#A78BFA"/>
+      <stop offset="1" stop-color="#6D28D9"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="300" y1="0" x2="640" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#2DD4BF"/>
+      <stop offset="1" stop-color="#8B5CF6"/>
+    </linearGradient>
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="6" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- panel -->
+  <rect x="0" y="0" width="1200" height="320" rx="28" fill="url(#bg)"/>
+  <rect x="1.5" y="1.5" width="1197" height="317" rx="26.5" fill="none" stroke="#2A3350" stroke-width="3"/>
+
+  <!-- decorative nested-set tree (nods to the Cat category model) -->
+  <g stroke="#2DD4BF" stroke-width="2" opacity="0.16" fill="#2DD4BF">
+    <line x1="1040" y1="70" x2="980" y2="150"/>
+    <line x1="1040" y1="70" x2="1100" y2="150"/>
+    <line x1="980" y1="150" x2="945" y2="235"/>
+    <line x1="980" y1="150" x2="1015" y2="235"/>
+    <line x1="1100" y1="150" x2="1135" y2="235"/>
+    <circle cx="1040" cy="70" r="9"/>
+    <circle cx="980" cy="150" r="8"/>
+    <circle cx="1100" cy="150" r="8"/>
+    <circle cx="945" cy="235" r="7"/>
+    <circle cx="1015" cy="235" r="7"/>
+    <circle cx="1135" cy="235" r="7"/>
+  </g>
+
+  <!-- emblem: geometric cat (ears = LeftEar / RightEar of the nested set) -->
+  <g filter="url(#glow)">
+    <polygon points="122,130 152,64 184,124" fill="url(#ear)"/>
+    <polygon points="186,124 218,64 248,130" fill="url(#ear)"/>
+    <polygon points="138,124 154,90 170,122" fill="#1B2138"/>
+    <polygon points="200,122 216,90 232,124" fill="#1B2138"/>
+    <rect x="110" y="120" width="150" height="140" rx="34" fill="url(#purple)"/>
+    <rect x="110" y="120" width="150" height="140" rx="34" fill="none" stroke="#C4B5FD" stroke-width="2" opacity="0.5"/>
+
+    <!-- cat slit eyes, styled as code carets -->
+    <g fill="#0B1020">
+      <ellipse cx="152" cy="184" rx="15" ry="21"/>
+      <ellipse cx="218" cy="184" rx="15" ry="21"/>
+    </g>
+    <g fill="#2DD4BF">
+      <ellipse cx="152" cy="184" rx="5" ry="17"/>
+      <ellipse cx="218" cy="184" rx="5" ry="17"/>
+    </g>
+
+    <!-- nose + mouth -->
+    <polygon points="178,212 192,212 185,222" fill="#2DD4BF"/>
+    <path d="M185 222 q-12 14 -24 4" stroke="#C4B5FD" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+    <path d="M185 222 q12 14 24 4" stroke="#C4B5FD" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+
+    <!-- whiskers -->
+    <g stroke="#C4B5FD" stroke-width="2" opacity="0.8" stroke-linecap="round">
+      <line x1="96" y1="196" x2="132" y2="200"/>
+      <line x1="96" y1="214" x2="132" y2="212"/>
+      <line x1="274" y1="196" x2="238" y2="200"/>
+      <line x1="274" y1="214" x2="238" y2="212"/>
+    </g>
+  </g>
+
+  <!-- wordmark -->
+  <text x="300" y="118" font-family="'Segoe UI', system-ui, -apple-system, Helvetica, Arial, sans-serif"
+        font-size="26" font-weight="700" letter-spacing="7" fill="#2DD4BF">ASP.NET&#160;CORE&#160;10</text>
+
+  <text x="298" y="192" font-family="'Segoe UI', system-ui, -apple-system, Helvetica, Arial, sans-serif"
+        font-size="62" font-weight="800" fill="#F1F5FF">Production API Template</text>
+
+  <rect x="302" y="214" width="120" height="5" rx="2.5" fill="url(#accent)"/>
+
+  <text x="300" y="258" font-family="'Segoe UI', system-ui, -apple-system, Helvetica, Arial, sans-serif"
+        font-size="23" font-weight="500" fill="#9AA5BE">Clean architecture &#183; PostgreSQL &#183; JWT &#183; SignalR &#183; Testcontainers</text>
+</svg>

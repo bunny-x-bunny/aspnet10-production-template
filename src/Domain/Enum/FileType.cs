@@ -7,9 +7,5 @@ namespace Domain.Enum {
   public enum FileType {
     [Description("Аватар пользователя")]
     UserAvatar,
-    [Description("Фото или видео объекта недвижимости")]
-    EstateImage,
-    [Description("Планировка и документы объекта недвижимости")]
-    EstateDocument
   }
 }
