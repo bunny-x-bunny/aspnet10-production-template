@@ -156,7 +156,7 @@ using (var scope = app.Services.CreateScope()) {
 if (app.Environment.IsDevelopment() || app.Environment.IsStaging()) {
   app.MapOpenApi();
   app.MapScalarApiReference(opts => opts
-      .WithTitle("Project - API Reference")
+      .WithTitle("NewProject - API Reference")
       .WithDefaultHttpClient(ScalarTarget.Http, ScalarClient.Http11)
       .WithCustomCss(".operation-details .markdown strong {color: #f00;}")
   //.WithApiKeyAuthentication(opts => opts.Token = "Bearer " + builder.Configuration["Scalar:DefaultAuthToken"])

@@ -1,4 +1,5 @@
 <Solution>
+  <Project Path="API.Integration/API.Integration.csproj" Id="c968f4fd-581f-4c7c-8fa0-5a306eb4daee" />
   <Project Path="API/API.csproj" />
   <Project Path="Application/Application.csproj" Id="26c17575-8524-48b7-a5a4-818fe39e40c3" />
   <Project Path="Common/Common.csproj" Id="0c565fb0-e507-49c1-bda7-b0eebe29568c" />

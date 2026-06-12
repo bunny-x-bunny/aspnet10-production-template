@@ -17,7 +17,7 @@ services:
   db:
     image: postgres:17.4-alpine3.21
     environment:
-        - POSTGRES_DB=project-staging
+        - POSTGRES_DB=newproject-staging
         - POSTGRES_HOST_AUTH_METHOD=trust
     ports:
         - "127.0.0.1:3001:5432"
