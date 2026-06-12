@@ -5,9 +5,9 @@ using System.ComponentModel;
 
 namespace Application.DTO.User {
   public class GetUserExtDTO : GetUserBasicDTO {
-    [Description("Email подтверждён")]
+    [Description("Email confirmed")]
     public required bool EmailConfirmed { get; set; }
-    //[Description("Разрешения")]
+    //[Description("Permissions")]
     //public required ISet<Permission> Permissions { get; set; }
 
     public static new GetUserExtDTO FromEntity<T>(

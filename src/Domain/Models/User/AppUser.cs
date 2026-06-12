@@ -5,12 +5,12 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Domain.Models.User {
   public class AppUser : IdentityUser<Guid> {
-    [Description("Роль пользователя")]
+    [Description("User role")]
     public required Role Role { get; set; }
     [MaxLength(255)]
-    [Description("Полное имя")]
+    [Description("Full name")]
     public required string FullName { get; set; }
-    [Description("Аватар")]
+    [Description("Avatar")]
     public Guid? AvatarId { get; set; }
     public File? Avatar { get; set; }
   }

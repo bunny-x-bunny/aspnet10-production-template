@@ -8,16 +8,16 @@ namespace Domain.Models {
     public class Notification : IDisposable {
         [Key]
         public Guid Id { get; init; }
-        [Description("Получатель")]
+        [Description("Recipient")]
         public required Guid UserId { get; set; }
         public AppUser User { get; set; } = null!;
-        [Description("Тип уведомления")]
+        [Description("Notification type")]
         public required NotificationType Type { get; set; }
-        [Description("Данные уведомления")]
+        [Description("Notification data")]
         public required JsonDocument Data { get; set; }
-        [Description("Прочитано")]
+        [Description("Read")]
         public bool Read { get; set; } = false;
-        [Description("Дата создания")]
+        [Description("Creation date")]
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
         public void Dispose() => Data?.Dispose();

@@ -4,7 +4,7 @@ using System.Text.Json;
 
 namespace Application.DTO.Cat {
   public class UpdateCat {
-    [Description("Название категории")]
+    [Description("Category name")]
     [MaxLength(255)]
     public required string Name { get; set; }
 

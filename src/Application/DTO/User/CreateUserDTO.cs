@@ -10,8 +10,8 @@ namespace Application.DTO.User {
     [Required]
     [MaxLength(255)]
     public required string Email { get; set; }
-    [Description("Пароль  \n" +
-      "`null` - будет сгенериван автоматически")]
+    [Description("Password  \n" +
+      "`null` - will be generated automatically")]
     [MinLength(8)]
     public string? Password { get; set; }
 

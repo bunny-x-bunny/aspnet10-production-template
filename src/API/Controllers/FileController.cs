@@ -21,7 +21,7 @@ namespace API.Controllers {
     private readonly IPaginationService pagination = pagination;
 
     [HttpGet]
-    [EndpointDescription("Все файлы")]
+    [EndpointDescription("All files")]
     [Authorize]
     public async Task<KeysetPaginationResult<GetFileDTO>> GetAll(
       [FromQuery] KeysetQueryModel _,
@@ -40,11 +40,11 @@ namespace API.Controllers {
     }
 
     [HttpPost("{type}")]
-    [EndpointDescription(@"Загрузка файла  
-      Ограничения:  
-      `jpg, jpeg, png, webp` -> 2МБ")]
+    [EndpointDescription(@"Upload a file
+      Limits:
+      `jpg, jpeg, png, webp` -> 2MB")]
     [AuthorizeJWTRoles(Role.Admin)]
-    public async Task<Results<Ok<GetFileDTO>, ValidationProblem>> Upload(IFormFile file, [Description("Назначение файла")] FileType type) {
+    public async Task<Results<Ok<GetFileDTO>, ValidationProblem>> Upload(IFormFile file, [Description("File purpose")] FileType type) {
       if (type is FileType.UserAvatar)
         throw new InvalidOperationException("Use POST /File/self/avatar instead");
 
@@ -67,9 +67,9 @@ namespace API.Controllers {
     }
 
     [HttpPut("self/avatar")]
-    [EndpointDescription(@"Изменение своего аватара  
-      Ограничения:  
-      `jpg, jpeg, png, webp` -> 2МБ")]
+    [EndpointDescription(@"Update your own avatar
+      Limits:
+      `jpg, jpeg, png, webp` -> 2MB")]
     [Authorize]
     public async Task<Results<Ok<GetFileDTO?>, ValidationProblem, UnauthorizedHttpResult>> UpdateAvatar(IFormFile? file) {
       // perform validations
@@ -101,7 +101,7 @@ namespace API.Controllers {
     }
 
     [HttpDelete("{uuid}")]
-    [EndpointDescription("Удаление файла и всех связей")]
+    [EndpointDescription("Delete a file and all its relations")]
     [Authorize]
     public async Task<Results<Ok, ForbidHttpResult, NotFound>> DeleteFile(Guid uuid) {
       if (await service.Find(uuid) is not { } entity)

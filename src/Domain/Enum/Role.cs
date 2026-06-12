@@ -4,9 +4,9 @@ using System.Text.Json.Serialization;
 namespace Domain.Enum {
     [JsonConverter(typeof(JsonStringEnumConverter<Role>))]
     public enum Role {
-        [Description("Пользователь")]
+        [Description("User")]
         User,
-        [Description("Администратор")]
+        [Description("Administrator")]
         Admin,
     }
 }

@@ -7,7 +7,7 @@ namespace Application.DTO.Cat {
   public class GetCatDTO {
     public required Guid Id { get; set; }
     public required Guid? ParentId { get; set; }
-    [Description("Название категории")]
+    [Description("Category name")]
     [MaxLength(255)]
     public required string Name { get; set; }
     public required int LeftEar { get; set; }

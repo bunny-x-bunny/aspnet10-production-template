@@ -23,7 +23,7 @@ namespace API.Controllers {
         private readonly IPaginationService pagination = pagination;
 
         [HttpGet]
-        [EndpointDescription("Все категории")]
+        [EndpointDescription("All categories")]
         public async Task<Ok<KeysetPaginationResult<GetCatDTO>>> GetAll(
             [FromQuery] CatSearchModel search,
             [FromQuery] SortModel sort
@@ -37,22 +37,22 @@ namespace API.Controllers {
             ));
 
         [HttpGet("family")]
-        [EndpointDescription($@"Древо категорий  
-            Доступна динамическая подгрузка узлов передачей параметра `root_id`.<br>  
+        [EndpointDescription($@"Category tree
+            Nodes can be loaded dynamically by passing the `root_id` parameter.<br>
             ➕ Includes: ``
         ")]
         public async Task<List<GetCatFamilyEntry>> GetFamily(
-            [FromQuery] [Description("Корень поддерева")] Guid? root_id,
+            [FromQuery] [Description("Subtree root")] Guid? root_id,
             [FromQuery] HashSet<string> includes,
-            [FromQuery] [Description("Максимальное количество уровней")] int max_depth = 6
+            [FromQuery] [Description("Maximum number of levels")] int max_depth = 6
         ) => await service.Family(max_depth, root_id, includes);
 
         [HttpGet("breadcrumbs")]
-        [EndpointDescription($@"Путь от корня до конкретной категории.<br>  
+        [EndpointDescription($@"Path from the root to a specific category.<br>
             ➕ Includes: ``
         ")]
         public async Task<ICollection<GetCatBasic>> GetBreadcrumbs(
-           [FromQuery][Description("Конечная категория")][Required] Guid cat_id,
+           [FromQuery][Description("Target category")][Required] Guid cat_id,
            [FromQuery] HashSet<string> includes
         ) {
             var tree = await service.Breadcrumbs(cat_id, 6, includes);
@@ -69,7 +69,7 @@ namespace API.Controllers {
         }
 
         [HttpGet("{uuid}")]
-        [EndpointDescription("Конкретная категория")]
+        [EndpointDescription("A specific category")]
         public async Task<Results<Ok<GetCatDTO>, NotFound>> Get(Guid uuid)
             => await service.Find(uuid) switch {
                 Cat x => TypedResults.Ok(GetCatDTO.FromEntity(x)),
@@ -77,7 +77,7 @@ namespace API.Controllers {
             };
 
         [HttpPost("{uuid}")]
-        [EndpointDescription("Создание категории")]
+        [EndpointDescription("Create a category")]
         [AuthorizeJWTRoles(Role.Admin)]
         public async Task<Results<Ok<GetCatDTO>, NotFound>> Create(Guid uuid, [FromBody] UpdateCat request)
             => (await service.Create(uuid, request)).Result switch {
@@ -86,7 +86,7 @@ namespace API.Controllers {
             };
 
         [HttpPut("{uuid}")]
-        [EndpointDescription("Обновление категории")]
+        [EndpointDescription("Update a category")]
         [AuthorizeJWTRoles(Role.Admin)]
         public async Task<Results<Ok<GetCatDTO>, NotFound>> Update(Guid uuid, [FromBody] UpdateCat request)
             => await service.Find(uuid) switch {
@@ -96,20 +96,20 @@ namespace API.Controllers {
             };
 
         [HttpDelete("{uuid}")]
-        [EndpointDescription("Удаление категории")]
+        [EndpointDescription("Delete a category")]
         [AuthorizeJWTRoles(Role.Admin)]
         public async Task<Results<Ok, ValidationProblem, NotFound>> Delete(
             Guid uuid, 
-            [FromQuery] [Description("Рекурсивно")] bool recursive = false
+            [FromQuery] [Description("Recursive")] bool recursive = false
         ) => await service.Delete(uuid, recursive);
 
         /*[HttpPost("{uuid}/move-products/{to_uuid}")]
-        [EndpointDescription("Перемещение всех товаров в новую категорию")]
+        [EndpointDescription("Move all products to a new category")]
         [AuthorizeJWTRoles(Role.Admin)]
         public async Task<Results<Ok, NotFound>> BulkMovePosts(
             Guid uuid, 
             Guid to_uuid, 
-            [FromQuery] [Description("Рекурсивно")] bool recursive = false
+            [FromQuery] [Description("Recursive")] bool recursive = false
         ) => await service.BulkMoveProducts(uuid, to_uuid, recursive);*/
     }
 }

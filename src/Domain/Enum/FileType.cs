@@ -5,7 +5,7 @@ using System.Text.Json.Serialization;
 namespace Domain.Enum {
   [JsonConverter(typeof(JsonStringEnumConverter<FileType>))]
   public enum FileType {
-    [Description("Аватар пользователя")]
+    [Description("User avatar")]
     UserAvatar,
   }
 }

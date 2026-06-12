@@ -21,7 +21,7 @@ namespace API.Controllers {
     private readonly IPaginationService pagination = pagination;
 
     [HttpGet]
-    [EndpointDescription("Все пользователи")]
+    [EndpointDescription("All users")]
     [AuthorizeJWTRoles(Role.Admin)]
     public async Task<KeysetPaginationResult<GetUserExtDTO>> GetAll(
         [FromQuery] KeysetQueryModel _,
@@ -35,7 +35,7 @@ namespace API.Controllers {
     );
 
     [HttpGet("self")]
-    [EndpointDescription("Информация текущего пользователя")]
+    [EndpointDescription("Current user info")]
     [Authorize]
     public async Task<Results<Ok<GetUserExtDTO>, NotFound>> GetSelf()
       => await service.Find((Guid)User.Uuid()!) switch {
@@ -44,7 +44,7 @@ namespace API.Controllers {
       };
 
     [HttpPut("self/basic")]
-    [EndpointDescription("Изменение базовой информации текущего пользователя")]
+    [EndpointDescription("Update current user's basic info")]
     [Authorize]
     public async Task<Results<Ok<GetUserBasicDTO>, UnauthorizedHttpResult>> UpdateSelf([FromBody] UserBasicDTO request)
       => (await service.UpdateBasic((Guid)User.Uuid()!, request)).Result switch {
@@ -53,13 +53,13 @@ namespace API.Controllers {
       };
 
     /*[HttpPut("self/lang")]
-    [EndpointDescription("Изменение языка уведомлений")]
+    [EndpointDescription("Change notification language")]
     [Authorize]
-    public async Task UpdateLang([FromBody][Description("Язык (ISO-2)")][MaxLength(2)][RegularExpression(@"^[a-z]{2}$")] string lang)
+    public async Task UpdateLang([FromBody][Description("Language (ISO-2)")][MaxLength(2)][RegularExpression(@"^[a-z]{2}$")] string lang)
         => await service.UpdateLang((Guid)User.Uuid()!, lang);*/
 
     [HttpGet("{uuid}")]
-    [EndpointDescription("Информация пользователя")]
+    [EndpointDescription("User info")]
     [AuthorizeJWTRoles(Role.Admin)]
     public async Task<Results<Ok<GetUserExtDTO>, NotFound>> Get(Guid uuid)
       => await service.Find(uuid) switch {
@@ -68,8 +68,8 @@ namespace API.Controllers {
       };
 
     [HttpPatch("{uuid}/credentials")]
-    [EndpointDescription(@"Обновление учётных данных пользователя  
-            Достаточно передать хотя бы один из параметров")]
+    [EndpointDescription(@"Update user credentials
+            At least one parameter is sufficient")]
     [AuthorizeJWTRoles(Role.Admin)]
     public async Task<Results<Ok<GetUserBasicDTO>, ValidationProblem, NotFound>> UpdateCredentials(Guid uuid, [FromBody] UpdateUserCredentialsDTO request)
         => (await service.UpdateCredentials(uuid, request)).Result switch {
@@ -79,7 +79,7 @@ namespace API.Controllers {
         };
 
     [HttpPost("Admin")]
-    [EndpointDescription("Создание админа")]
+    [EndpointDescription("Create admin")]
     [AuthorizeJWTRoles(Role.Admin)]
     public async Task<Results<Ok<GetUserBasicDTO>, ValidationProblem>> CreateAdmin([FromBody] CreateAdminDTO request)
         => (await service.CreateUser(request.ToEntity(), request.Email, request.Password)).Result switch {
@@ -88,7 +88,7 @@ namespace API.Controllers {
         };
 
     [HttpPost("User")]
-    [EndpointDescription("Создание пользователя")]
+    [EndpointDescription("Create user")]
     [AuthorizeJWTRoles(Role.Admin)]
     public async Task<Results<Ok<GetUserBasicDTO>, ValidationProblem>> CreateUser([FromBody] CreateUserDTO request)
         => (await service.CreateUser(request.ToEntity(), request.Email, request.Password)).Result switch {
@@ -97,7 +97,7 @@ namespace API.Controllers {
         };
 
     [HttpPut("Admin/{uuid}")]
-    [EndpointDescription("Обновление админа")]
+    [EndpointDescription("Update admin")]
     [AuthorizeJWTRoles(Role.Admin)]
     public async Task<Results<Ok<GetUserBasicDTO>, NotFound>> UpdateAdmin(Guid uuid, [FromBody] UpdateUserDTO request)
         => (await service.UpdateAdmin(uuid, request)).Result switch {
@@ -106,7 +106,7 @@ namespace API.Controllers {
         };
 
     [HttpPut("User/{uuid}")]
-    [EndpointDescription("Обновление пользователя")]
+    [EndpointDescription("Update user")]
     [AuthorizeJWTRoles(Role.Admin)]
     public async Task<Results<Ok<GetUserBasicDTO>, NotFound>> UpdateUser(Guid uuid, [FromBody] UpdateUserDTO request)
         => (await service.UpdateUser(uuid, request)).Result switch {
@@ -115,9 +115,9 @@ namespace API.Controllers {
         };
 
     [HttpDelete("{uuid}")]
-    [EndpointDescription(@"Удаление пользователя и всех связанных данных")]
+    [EndpointDescription(@"Delete a user and all related data")]
     [AuthorizeJWTRoles(Role.Admin)]
-    public async Task<Results<Ok, NotFound>> Delete(Guid uuid, [FromQuery] [Description("Удалить загруженные файлы")] bool delete_files) {
+    public async Task<Results<Ok, NotFound>> Delete(Guid uuid, [FromQuery] [Description("Delete uploaded files")] bool delete_files) {
       if (await service.Find(uuid) is not AppUser entity) return TypedResults.NotFound();
       await service.Delete(entity, delete_files);
       return TypedResults.Ok();

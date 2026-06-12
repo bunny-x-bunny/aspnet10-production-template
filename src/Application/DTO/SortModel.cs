@@ -5,9 +5,9 @@ using System.ComponentModel;
 
 namespace Application.DTO {
     public class SortModel {
-        [Description("📈 Поле сортировки")]
+        [Description("📈 Sort field")]
         public string? SortBy { get; set; }
-        [Description("📈 Направление сортировки")]
+        [Description("📈 Sort direction")]
         public SortOrder? SortOrder { get; set; }
     }
 

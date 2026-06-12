@@ -11,14 +11,14 @@ namespace Persistence.Seeders {
 
       if (!await context.Users.AnyAsync()) {
         await user_manager.CreateAsync(new AppUser {
-          FullName = "Администратор Иванова",
+          FullName = "Admin Ivanova",
           Role = Role.Admin,
           Email = "admin@example.com",
           UserName = "admin@example.com",
         }, "password");
 
         await user_manager.CreateAsync(new AppUser {
-          FullName = "Пользователь Иванов",
+          FullName = "User Ivanov",
           Role = Role.User,
           Email = "user@example.com",
           UserName = "user@example.com",

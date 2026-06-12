@@ -23,7 +23,7 @@ namespace API.Controllers {
     private readonly IPaginationService pagination = pagination;
 
     [HttpGet("my")]
-    [EndpointDescription("Мои уведомления")]
+    [EndpointDescription("My notifications")]
     [Authorize]
     public async Task<KeysetPaginationResult<GetNotificationDTO>> GetAllMy(
         [FromQuery] KeysetQueryModel _,
@@ -39,7 +39,7 @@ namespace API.Controllers {
     );
 
     [HttpGet("{uuid}")]
-    [EndpointDescription("Конкретное уведомление")]
+    [EndpointDescription("A specific notification")]
     [Authorize]
     public async Task<Results<Ok<GetNotificationDTO>, NotFound>> Get(Guid uuid)
         => await service.All()
@@ -50,9 +50,9 @@ namespace API.Controllers {
         };
 
     [HttpPost("read/{read}")]
-    [EndpointDescription("Флаг прочтения уведомлений")]
+    [EndpointDescription("Notification read flag")]
     [Authorize]
-    public async Task ConfirmRead(bool read, [FromBody][Description("ID уведомлений")] IEnumerable<Guid> request)
+    public async Task ConfirmRead(bool read, [FromBody][Description("Notification IDs")] IEnumerable<Guid> request)
         => await service.UpdateRead(
             service.All()
                 .ForUser((Guid)User.Uuid()!)
@@ -61,7 +61,7 @@ namespace API.Controllers {
         );
 
     [HttpDelete("{uuid}")]
-    [EndpointDescription("Удаление уведомления")]
+    [EndpointDescription("Delete a notification")]
     [Authorize]
     public async Task<Results<Ok, NotFound>> Delete(Guid uuid) {
       if (await service.All()

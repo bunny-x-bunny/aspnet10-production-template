@@ -16,7 +16,7 @@ namespace API.Integration.Tests {
       var response = await client.PostAsJsonAsync("/Auth/register/user", new RegisterDTO {
         Email = email,
         Password = "password",
-        FullName = "Тестовый Пользователь"
+        FullName = "Test User"
       }, JsonOptions);
 
       var id = await ReadAsync<Guid>(response);

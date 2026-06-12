@@ -6,7 +6,7 @@ using System.Linq.Expressions;
 
 namespace Application.DTO.Cat.Search {
   public class CatSearchModel {
-    [Description("🔍 Родительская категория")]
+    [Description("🔍 Parent category")]
     public Guid? ParentId { get; set; }
     [Description("🔍 LeftEar")]
     public int? LeftEar { get; set; }
@@ -14,7 +14,7 @@ namespace Application.DTO.Cat.Search {
     [Description("🔍 RightEar")]
     public int? RightEar { get; set; }
     public OrdinalOp? RightEarOp { get; set; }
-    [Description("🔍 Название категории")]
+    [Description("🔍 Category name")]
     [MaxLength(255)]
     [DisplayFormat(ConvertEmptyStringToNull = false)]
     public string? Name { get; set; }

@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 namespace Application.SignalR.Interfaces {
     [SignalRHub]
     public interface IMainHub {
-        [SignalRMethod(summary: $"🛜🔻 {nameof(New)}", description: @"Новое уведомление.  
-            Документация для конкретных типов доступна в [`/Notification/.doc`](#tag/notification/get/Notification/.doc/OrderStale)
+        [SignalRMethod(summary: $"🛜🔻 {nameof(New)}", description: @"New notification.
+            Documentation for specific types is available at [`/Notification/.doc`](#tag/notification/get/Notification/.doc/OrderStale)
         ")]
         Task New(GetNotificationDTO notification);
     }

@@ -4,9 +4,9 @@ using System.Text.Json.Serialization;
 namespace Domain.Enum {
     [JsonConverter(typeof(JsonStringEnumConverter<SortOrder>))]
     public enum SortOrder {
-        [Description("📈 По возрастанию")]
+        [Description("📈 Ascending")]
         Asc,
-        [Description("📉 По убыванию")]
+        [Description("📉 Descending")]
         Desc
     }
 }

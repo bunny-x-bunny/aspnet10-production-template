@@ -9,7 +9,7 @@ namespace Domain.Models {
     public Guid Id { get; init; }
     public Guid? ParentId { get; set; }
     public Cat? Parent { get; set; }
-    [Description("Название категории")]
+    [Description("Category name")]
     [MaxLength(255)]
     public required string Name { get; set; }
     public required int LeftEar { get; set; }

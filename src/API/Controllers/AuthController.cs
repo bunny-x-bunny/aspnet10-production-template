@@ -12,12 +12,12 @@ namespace API.Controllers {
         private readonly IAuthService service = service;
 
         [HttpPost("register/user")]
-        [EndpointDescription("Регистрация пользователем")]
+        [EndpointDescription("Self-registration")]
         public async Task<Results<Ok<Guid>, ValidationProblem>> Register([FromBody] RegisterDTO registration)
             => await service.RegisterUser(registration);
 
         [HttpGet("confirm_email", Name = "/Auth/confirm_email")]
-        [EndpointDescription("Подтверждение email")]
+        [EndpointDescription("Email confirmation")]
         public async Task<Results<ContentHttpResult, UnauthorizedHttpResult>> ConfirmEmail(
             [FromQuery] string userId,
             [FromQuery] string code,
@@ -25,33 +25,33 @@ namespace API.Controllers {
         ) => await service.ConfirmEmail(userId, code, changedEmail);
 
         [HttpPost("login")]
-        [EndpointDescription("Авторизация")]
+        [EndpointDescription("Login")]
         public async Task<Results<EmptyHttpResult, ProblemHttpResult>> Login([FromBody] LoginRequest login)
             => await service.Login(login);
 
         [HttpPost("logout")]
-        [EndpointDescription("Выход")]
+        [EndpointDescription("Logout")]
         [Authorize]
         public Results<EmptyHttpResult, ProblemHttpResult> Logout()
             => service.Logout(User);
 
         [HttpPost("resend_confirmation_email")]
-        [EndpointDescription("Переотправить код подтверждения email")]
+        [EndpointDescription("Resend email confirmation code")]
         public async Task<Ok> ResendConfirmationEmail([FromBody] ResendConfirmationEmailRequest request)
             => await service.ResendConfirmationEmail(request);
 
         [HttpPost("forgot_password")]
-        [EndpointDescription("Отправить код сброса пароля на email")]
+        [EndpointDescription("Send password reset code via email")]
         public async Task<Results<Ok, ValidationProblem>> ForgotPassword([FromBody] ForgotPasswordRequest request)
             => await service.ForgotPassword(request);
 
         [HttpPost("reset_password")]
-        [EndpointDescription("Сбросить пароль с использованием кода")]
+        [EndpointDescription("Reset password using a code")]
         public async Task<Results<Ok, ValidationProblem>> ResetPassword([FromBody] ResetPasswordRequest request)
             => await service.ResetPassword(request);
 
         [HttpPatch("manage/credentials")]
-        [EndpointDescription("Изменение email и/или пароля")]
+        [EndpointDescription("Change email and/or password")]
         [Authorize]
         public async Task<Results<Ok<InfoResponse>, ValidationProblem, NotFound>> ManageCredentials([FromBody] InfoRequest request)
             => await service.ManageCredentials(User, request);

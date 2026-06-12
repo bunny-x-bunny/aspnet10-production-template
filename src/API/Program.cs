@@ -95,15 +95,15 @@ builder.Services.AddSwaggerGen(opt => {
   opt.SwaggerDoc("v1", new Microsoft.OpenApi.OpenApiInfo {
     Version = "v1",
     Title = "Project API",
-    Description = @"Легенда:  
-- 🔍: Параметр фильтрации  
-- ♓: Полнотекстовый/нечёткий поиск  
-- 📈📉: Параметр сортировки  
-- 🔑: Составной первичный ключ
-- ⚡: Производные
-- 🚥: Производные контекста
-- 🈲: Политики доступа
-- 🛜: Датаграмма SignalR"
+    Description = @"Legend:
+- 🔍: Filter parameter
+- ♓: Full-text/fuzzy search
+- 📈📉: Sort parameter
+- 🔑: Composite primary key
+- ⚡: Derivatives
+- 🚥: Context-derivatives
+- 🈲: Access policies
+- 🛜: SignalR datagram"
   });
 });
 
