@@ -13,9 +13,9 @@ namespace Application.DTO.User {
         [EmailAddress]
         [MaxLength(255)]
         public string? Email { get; set; }
-        [Description("Роль пользователя")]
+        [Description("User role")]
         public Role? Role { get; set; }
-        [Description("Пароль")]
+        [Description("Password")]
         [MinLength(8)]
         public string? Password { get; set; }
     }

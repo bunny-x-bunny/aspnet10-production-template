@@ -16,7 +16,7 @@ namespace Application.DTO.Auth {
         public required string Password { get; init; }
 
         [MaxLength(255)]
-        [Description("ФИО")]
+        [Description("Full name")]
         [Required]
         public required string FullName { get; set; }
     }

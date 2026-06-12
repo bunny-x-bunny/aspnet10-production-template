@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Application.DTO.User {
   public class UpdateUserDTO : UserBasicDTO {
-    //[Description("Разрешения")]
+    //[Description("Permissions")]
     //public required ISet<Permission> Permissions { get; set; }
 
     public new T UpdateEntity<T>(T entity) where T : AppUser {

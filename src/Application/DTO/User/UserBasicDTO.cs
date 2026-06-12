@@ -5,12 +5,12 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Application.DTO.User {
     public class UserBasicDTO {
-        [Description("Телефон")]
+        [Description("Phone")]
         [Phone]
         [MaxLength(63)]
         public string? PhoneNumber { get; set; }
         [MaxLength(255)]
-        [Description("ФИО")]
+        [Description("Full name")]
         [Required]
         public required string FullName { get; set; }
 

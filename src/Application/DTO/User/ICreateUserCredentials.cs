@@ -8,7 +8,7 @@ namespace Application.DTO.User {
     [Required]
     [MaxLength(255)]
     public string Email { get; set; }
-    [Description("Пароль")]
+    [Description("Password")]
     [MinLength(8)]
     public string? Password { get; set; }
   }

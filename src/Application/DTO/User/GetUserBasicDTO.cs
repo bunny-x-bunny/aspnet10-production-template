@@ -12,9 +12,9 @@ namespace Application.DTO.User {
     [Required]
     [MaxLength(255)]
     public required string Email { get; set; }
-    [Description("Роль пользователя")]
+    [Description("User role")]
     public required Role Role { get; set; }
-    [Description("Аватар")]
+    [Description("Avatar")]
     public GetFileDTO? Avatar { get; set; }
 
     public static GetUserBasicDTO? FromEntity<T>(T entity) where T : AppUser? => 

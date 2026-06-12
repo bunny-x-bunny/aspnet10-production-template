@@ -13,15 +13,15 @@ namespace Application.DTO.User.Search {
         [DisplayFormat(ConvertEmptyStringToNull = false)]
         public string? Email { get; set; }
         public StringOp? EmailOp { get; set; }
-        [Description("🔍 ФИО")]
+        [Description("🔍 Full name")]
         [DisplayFormat(ConvertEmptyStringToNull = false)]
         public string? FullName { get; set; }
         public StringOp? FullNameOp { get; set; }
-        [Description("🔍 Телефон")]
+        [Description("🔍 Phone")]
         [DisplayFormat(ConvertEmptyStringToNull = false)]
         public string? PhoneNumber { get; set; }
         public StringOp? PhoneNumberOp { get; set; }
-        [Description("🔍 Роль")]
+        [Description("🔍 Role")]
         public ICollection<Role>? Role { get; set; }
 
         public Expression<Func<T, bool>> ToPredicate<T>() where T: AppUser {

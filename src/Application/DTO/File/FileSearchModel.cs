@@ -12,20 +12,20 @@ using System.Threading.Tasks;
 
 namespace Application.DTO.File {
     public class FileSearchModel {
-        [Description("🔍 Создатель")]
+        [Description("🔍 Creator")]
         public Guid? User { get; set; }
-        [Description("🔍 Имя без расширения")]
+        [Description("🔍 Name without extension")]
         [MaxLength(255)]
         public string? Name { get; set; }
         public StringOp? NameOp { get; set; }
-        [Description("🔍 Тип")]
+        [Description("🔍 Type")]
         public ICollection<FileType>? Type { get; set; }
-        [Description("🔍 Расширение")]
+        [Description("🔍 Extension")]
         public ICollection<string>? Extension { get; set; }
-        [Description("🔍 Размер")]
+        [Description("🔍 Size")]
         public long? Size { get; set; }
         public OrdinalOp? SizeOp { get; set; }
-        [Description("🔍 Дата создания")]
+        [Description("🔍 Creation date")]
         public DateTime? CreatedAt { get; set; }
         public OrdinalOp? CreatedAtOp { get; set; }
 

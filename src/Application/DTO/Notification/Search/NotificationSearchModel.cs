@@ -11,11 +11,11 @@ using System.Threading.Tasks;
 
 namespace Application.DTO.Notification.Search {
     public class NotificationSearchModel {
-        [Description("🔍 Тип уведомления")]
+        [Description("🔍 Notification type")]
         public ICollection<NotificationType>? Type { get; set; }
-        [Description("🔍 Прочитано")]
+        [Description("🔍 Read")]
         public bool? Read { get; set; }
-        [Description("🔍 Дата создания")]
+        [Description("🔍 Creation date")]
         public DateTime? CreatedAt { get; set; }
         public OrdinalOp? CreatedAtOp { get; set; }
 

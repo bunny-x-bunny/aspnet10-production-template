@@ -4,16 +4,16 @@ using System.ComponentModel.DataAnnotations;
 namespace Application.DTO.File {
     public class GetFileDTO {
         public required Guid Id { get; init; }
-        [Description("Имя без расширения")]
+        [Description("Name without extension")]
         [MaxLength(255)]
         public string? Name { get; set; }
-        [Description("Расширение")]
+        [Description("Extension")]
         public required string Extension { get; set; }
-        [Description("Размер")]
+        [Description("Size")]
         public required long Size { get; set; }
         public required DateTime CreatedAt { get; set; }
-        [Description(@"⚡ Путь к файлу  
-            Полный URL: http://{{api_base}}/Uploads/{{path}}")]
+        [Description(@"⚡ File path
+            Full URL: http://{{api_base}}/Uploads/{{path}}")]
         public required string Path { get; set; }
 
         public static GetFileDTO FromEntity(Domain.Models.File entity) => new() {
