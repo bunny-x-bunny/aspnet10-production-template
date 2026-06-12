@@ -23,11 +23,17 @@ namespace Persistence {
     }
 
     public DbSet<Domain.Models.File> Files { get; set; }
+    public DbSet<Cat> Cats { get; set; }
     public DbSet<Notification> Notifications { get; set; }
 
 
     protected override void OnModelCreating(ModelBuilder builder) {
       base.OnModelCreating(builder);
+
+      builder.HasDbFunction(() => CreateChildCat(default, default))
+        .HasName("create_child_cat");
+      builder.HasDbFunction(() => CreateSiblingCat(default, default))
+        .HasName("create_sibling_cat");
 
       builder.Entity<AppUser>(u => {
         u.HasOne(u => u.Avatar).WithMany().OnDelete(DeleteBehavior.SetNull);
@@ -38,12 +44,25 @@ namespace Persistence {
       });
     }
 
+    /// <summary>
+    /// use only if parent has no cats yet
+    /// </summary>
+    public IQueryable<Cat> CreateChildCat(Guid parent_id, Guid child_id) =>
+        FromExpression(() => CreateChildCat(parent_id, child_id));
+
+    public IQueryable<Cat> CreateSiblingCat(Guid right_cat_id, Guid child_id) =>
+        FromExpression(() => CreateSiblingCat(right_cat_id, child_id));
+
+    public async Task<int> DeleteLeafCat(Guid cat_id) =>
+        await Database.ExecuteSqlAsync($"select delete_leaf_cat({cat_id})");
+
     public static async Task Seed(IServiceProvider sp, IWebHostEnvironment env) {
       var context = sp.GetRequiredService<AppDbContext>();
       await CommonSeeder.seed(context, sp);
       await StoredFunctionSeeder.seed(context, sp);
       await TriggerSeeder.seed(context, sp);
       await IndexSeeder.seed(context, sp);
+      await CatSeeder.seed(context, sp);
 
       if (env.IsDevelopment() || env.IsStaging()) {
         await UserSeeder.seed(context, sp);

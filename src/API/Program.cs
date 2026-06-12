@@ -128,6 +128,7 @@ builder.Services.RegisterDataServices(builder.Configuration);
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IFileService, FileService>();
+builder.Services.AddScoped<ICatService, CatService>();
 builder.Services.AddScoped<INotificationService, NotificationService>();
 
 // infrastructure services
